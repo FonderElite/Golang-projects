@@ -6,6 +6,20 @@ Go is a statically typed, compiled programming language designed at Google by Ro
 
 ## Go lang syntax
 ```go
+Important Terms
+//Main Types
+//string
+//bool
+//int
+//int uint int8 int16 int32 int64
+//uint uint8 uint16 uint32 uint64
+//byte - alias for uint8
+//rune - alias for int32
+//float32 float64
+//complex64 complex128
+```
+
+```go
 //Variables
 var a int = 1337
 b:= 1386
