@@ -65,10 +65,18 @@ fmt.Println("First-Name(*employee1).firstName)
 func plus(a int, b int) int {
    return a + b
 }
-
 func main(){
  res := plus(1, 2)
     fmt.Println("1+2 =", res)
 }
 //Output: 1+2 = 3
+
+func plusPlus(a, b, c int) int {
+    return a + b + c
+}
+func main(){
+ res = plusPlus(1, 2, 3)
+    fmt.Println("1+2+3 =", res)
+}
+//Output: 1+2+3= 6
 ```
