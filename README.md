@@ -59,3 +59,16 @@ employee1 = &Employee{"Sam", "Anderson", 55, 6000}
 fmt.Println("First-Name(*employee1).firstName)
 //Output: Sam
 ```
+
+```go
+//Functions
+func plus(a int, b int) int {
+   return a + b
+}
+
+func main(){
+ res := plus(1, 2)
+    fmt.Println("1+2 =", res)
+}
+//Output: 1+2 = 3
+```
