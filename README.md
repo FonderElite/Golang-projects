@@ -70,7 +70,7 @@ func main(){
     fmt.Println("1+2 =", res)
 }
 //Output: 1+2 = 3
-/*----------------------------------*/
+
 func plusPlus(a, b, c int) int {
     return a + b + c
 }
