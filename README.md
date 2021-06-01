@@ -44,4 +44,12 @@ fmt.Printf("%d = %d\n", i, v)
 7 = 128
 */
 
+//Structs
+type Employee struct {
+    firstName, lastName string
+    age,salary int
+}
+employee1 = &Employee{"Sam", "Anderson", 55, 6000}
+fmt.Println("First-Name(*employee1).firstName)
+//Output: Sam
 ```
