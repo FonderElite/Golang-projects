@@ -23,6 +23,12 @@ fmt.Println(primes)
 ```
 ```go
 //Maps and slices
+language := make(map[string]int)
+language["JavaScript"] = 0
+language["Python"] = 1
+fmt.Println(language["JavaScript"],language["Python"])
+//Output: 0 1
+
 container := []int{1,2,3,4,5}
 var s []int = container[1:3]
 fmt.Println(s)
