@@ -15,7 +15,14 @@ var a [2]string
 a[0] = "Hello"
 a[1] = "World"
 fmt.Println(a[0], a[1])
+//Output:Hello World
 primes := [6]int{2, 3, 5, 7, 11, 13}
 fmt.Println(primes)
+//Output:[2, 3, 5, 7, 11, 13]
 
+//Maps and slices
+container := []int{1,2,3,4,5}
+var s []int = container[1:3]
+fmt.Println(s)
+//Output: [2,3]
 ```
