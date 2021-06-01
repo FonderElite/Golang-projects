@@ -98,3 +98,5 @@ fmt.Println(j) // see the new value of j
 21
 73
 ```
+## Why use Go?
+Due to the simple fact, Go is an open-source initiative. Go Offers easy support: Aside from having code that easy to learn, Go offers developers to use several tools to work with. Go contains a simple API allowing developers the environment for easy testing, profiling, and much more.
