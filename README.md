@@ -112,6 +112,22 @@ fmt.Println(j) // see the new value of j
 21
 73
 ```
+
+```golang
+//Channels
+func myfunc(ch chan int){
+fmt.Println(394 + <- ch)
+//Output: 788
+}
+func main() {
+v := 394
+f := make(chan int)
+go myfunc(f)
+f  <- v
+fmt.Println(f)
+//Output:0xc00006a060
+}
+```
 ## Why use Go?
 <img src="https://softensy.com/wp-content/uploads/2020/06/why-use-google-go-language.png" width=500px>
 Due to the simple fact, Go is an open-source initiative. Go Offers easy support: Aside from having code that easy to learn, Go offers developers to use several tools to work with. Go contains a simple API allowing developers the environment for easy testing, profiling, and much more.
