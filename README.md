@@ -28,3 +28,20 @@ var s []int = container[1:3]
 fmt.Println(s)
 //Output: [2,3]
 ```
+```go
+//Range
+var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+for i, v := range pow {
+		fmt.Printf("%d = %d\n", i, v)
+/*Output:
+0 = 1
+1 = 2
+2 = 4
+3 = 8
+4 = 16
+5 = 32
+6 = 64
+7 = 128
+*/
+
+```
