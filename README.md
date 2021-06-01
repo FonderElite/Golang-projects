@@ -32,7 +32,7 @@ fmt.Println(s)
 //Range
 var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
 for i, v := range pow {
-		fmt.Printf("%d = %d\n", i, v)
+fmt.Printf("%d = %d\n", i, v)
 /*Output:
 0 = 1
 1 = 2
