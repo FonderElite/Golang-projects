@@ -137,7 +137,7 @@ Due to the simple fact, Go is an open-source initiative. Go Offers easy support:
 
 ## Resources:
 
-[https://gobyexample.com/]("https://gobyexample.com/")
-[https://golang.org/]("https://golang.org/")
-[https://golangcode.com]("https://golangcode.com")
+[https://gobyexample.com/](https://gobyexample.com/)
+[https://golang.org/](https://golang.org/)
+[https://golangcode.com](https://golangcode.com)
 
