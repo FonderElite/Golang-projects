@@ -133,7 +133,7 @@ fmt.Println(f)
 Due to the simple fact, Go is an open-source initiative. Go Offers easy support: Aside from having code that easy to learn, Go offers developers to use several tools to work with. Go contains a simple API allowing developers the environment for easy testing, profiling, and much more.
 
 ## Golang Speed
-<img src="https://objectbox.io/wordpress/wp-content/uploads/2018/11/ObjectBox-Go-Performance.png" width=500px>
+<img src="https://www.bluematador.com/hubfs/Blue_Matador_Inc_October2017/Images/golang-language-runtimes-2.png" width=500px>
 
 ## Resources:
 
