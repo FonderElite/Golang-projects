@@ -27,12 +27,15 @@ defer list.Close()
 scanner := bufio.NewScanner(list)
 scanner.Split(bufio.ScanWords)
 for scanner.Scan() {
-request,err := http.Get(req.url + scanner.Text())
-if err != nil{
-log.Fatal(err)
-}
-fmt.Printf("[%v]Request:-> /%v",request.StatusCode,scanner.Text())
+        wlist := scanner.Text()
+for _,line := range wlist{
+        request,err := http.Get(string(req.url) + "/" + string(line))
+       if err != nil{
+       log.Fatal(err)
+       }
+       fmt.Printf("[%v]Request-> /%v\n",request.StatusCode,line)
     }
+}
 }else{
 fmt.Println("Error.")
 }
