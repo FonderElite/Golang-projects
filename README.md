@@ -135,3 +135,8 @@ Due to the simple fact, Go is an open-source initiative. Go Offers easy support:
 ## Golang Speed
 <img src="https://objectbox.io/wordpress/wp-content/uploads/2018/11/ObjectBox-Go-Performance.png" width=500px>
 
+## Resources:
+<a href="https://gobyexample.com/"></a>
+<a href="https://golang.org/"></a>
+<a href="https://golangcode.com"></a>
+
