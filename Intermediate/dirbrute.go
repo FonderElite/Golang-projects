@@ -19,22 +19,24 @@ if err != nil{
 log.Fatal(err)
 }else if resp.StatusCode == 200{
 fmt.Printf("[%v]Success Status Code.",resp.StatusCode)
-list,err := os.Open(req.wordlist)
+openf,err := os.Open(req.wordlist)
 if err != nil{
 log.Fatal(err)
 }
-defer list.Close()
-scanner := bufio.NewScanner(list)
-scanner.Split(bufio.ScanWords)
+defer openf.Close()
+scanner := bufio.NewScanner(openf)
+scanner.Split(bufio.ScanLines)
+var fileTextLines []string
 for scanner.Scan() {
-        wlist := scanner.Text()
-for _,line := range wlist{
-        request,err := http.Get(string(req.url) + "/" + string(line))
-       if err != nil{
-       log.Fatal(err)
-       }
-       fmt.Printf("[%v]Request-> /%v\n",request.StatusCode,line)
-    }
+                fileTextLines = append(fileTextLines, scanner.Text())
+        }
+openf.Close()
+for _, eachline := range fileTextLines {
+request,err := http.Get(string(req.url) + "/" + string(eachline))
+if err != nil {
+log.Fatal(err)
+}
+fmt.Printf("[%v]Request-> /%v \n",request.StatusCode,eachline)
 }
 }else{
 fmt.Println("Error.")
