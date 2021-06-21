@@ -25,12 +25,11 @@ defer resp.Body.Close()
 return &req
 }
 func main(){
-        fmt.Println("""
-     ___ ___  __      __   ___  __        ___  __  ___ 
-|__|  |   |  |__)    |__) |__  /  \ |  | |__  /__`  |  
-|  |  |   |  |       |  \ |___ \__X \__/ |___ .__/  |  
-By FonderElite | Github:https://github.com/FonderElite
-        """)
+        fmt.Println(
+"     ___ ___  __      __   ___  __        ___  __  ___ "
+"|__|  |   |  |__)    |__) |__  /  \ |  | |__  /__`  |  "
+"|  |  |   |  |       |  \ |___ \__X \__/ |___ .__/  |  "
+"By FonderElite | Github:https://github.com/FonderElite")
 var site string
 fmt.Println("Enter Url: ")
 fmt.Scanln(&site)
