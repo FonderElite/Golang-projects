@@ -11,7 +11,7 @@ type Request struct{
 url string
 wordlist string
 }
-func BruteForce(url string, wordl) *Request{
+func BruteForce(url string, wordl string) *Request{
 req := Request{url:url,wordlist: wordl}
 req.url = url
 resp, err := http.Get(req.url)
@@ -27,7 +27,11 @@ defer list.Close()
 scanner := bufio.NewScanner(list)
 scanner.Split(bufio.ScanWords)
 for scanner.Scan() {
-        fmt.Println(scanner.Text())
+request,err := http.Get(req.url + scanner.Text())
+if err != nil{
+log.Fatal(err)
+}
+fmt.Printf("[%v]Request:-> /%v",request.StatusCode,scanner.Text())
     }
 }else{
 fmt.Println("Error.")
@@ -38,9 +42,9 @@ func main(){
 var site string
 var wordlist string
 fmt.Println("-HTTP REQUEST-By FonderElite-")
-fmt.Print("Enter Url: \n")
+fmt.Print("Enter Url: ")
 fmt.Scanln(&site)
 fmt.Print("Wordlist: ")
 fmt.Scanln(&wordlist)
-CheckSite(site,wordlist)
+BruteForce(site,wordlist)
 }
