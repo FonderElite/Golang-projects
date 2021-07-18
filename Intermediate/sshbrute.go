@@ -103,7 +103,7 @@ func main(){
   addrFlag := flag.String("ip","127.0.0.1","Ip address")
   portFlag := flag.Int("port",22,"Port")
   userFlag := flag.String("user","ubuntu","SSH-User-name")
-  passFlag := flag.String("wordlist","rockyou.txt","Wordlist")
+  passFlag := flag.String("wordlist","/usr/share/wordlists/metasploit/unix_passwords.txt","Wordlist")
   flag.Parse()
   obj := Verify{*addrFlag,*portFlag,*userFlag,*passFlag}
   var value1 = obj.address 
